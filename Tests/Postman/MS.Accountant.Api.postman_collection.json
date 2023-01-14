@@ -1,0 +1,38 @@
+{
+	"info": {
+		"_postman_id": "7aba40ba-7bdf-47e2-87ae-bb6399e0296f",
+		"name": "MS.Accountant.Api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "20022599"
+	},
+	"item": [
+		{
+			"name": "Create tax payer",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"fullName\": \"Borislav Valkov\",\r\n    \"sSN\": 9007102222,\r\n    \"dateOfBirth\": \"1990-07-10\",\r\n    \"grossIncome\": 3600,\r\n    \"CharitySpent\": 520\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{ApiUrl}}/api/calculator/calculate",
+					"host": [
+						"{{ApiUrl}}"
+					],
+					"path": [
+						"api",
+						"calculator",
+						"calculate"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

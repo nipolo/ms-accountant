@@ -1,0 +1,13 @@
+version: '3.4'
+
+services:
+  ms.accountant.api:
+    container_name: ms.accountant.api
+    environment:
+      - DOTNET_ENVIRONMENT=Local
+    build:
+      context: ../
+      dockerfile: MS.Accountant/Api/Dockerfile
+    ports:
+      - "3000:80"
+    restart: unless-stopped

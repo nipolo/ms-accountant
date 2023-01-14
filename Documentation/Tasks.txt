@@ -1,0 +1,21 @@
+- Setup GitHub repo
+- Setup Solution, Projects (Api, Application, Domain?)
+- Setup Dockerfile for Api project & docker-compose project
+- Create Calculate EP, Dtos and Postman collection and environment
+- Create TaxPayerService
+	- CreateTaxPayer
+		- Calculate taxes
+		- Calculate NetIncome
+		- Cache in-memory
+		- Generate response
+- Create TaxService with methods 
+	- CalculateTaxes(decimal amount) and inject all taxes ITax[]
+		- ITax
+			- Props
+				- Id
+				- Name
+				- Priority
+			- Methods
+				- Calculate tax
+- Create InMemoryCacheService
+- Add tests for TaxCalculateService->CalculateTaxes

@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.Serialization;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace MS.Accountant.Application.Exceptions
+{
+    public class InvalidArgumentDomainException : Exception
+    {
+        public InvalidArgumentDomainException(string argumentName, object argumentValue)
+            : base($"Invalid argument {argumentName}: {argumentValue}")
+        {
+            
+        }
+    }
+}
