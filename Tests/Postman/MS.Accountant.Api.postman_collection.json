@@ -13,7 +13,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"fullName\": \"Borislav Valkov\",\r\n    \"sSN\": 9007102222,\r\n    \"dateOfBirth\": \"1990-07-10\",\r\n    \"grossIncome\": 3600,\r\n    \"CharitySpent\": 520\r\n}",
+					"raw": "{\r\n    \"fullName\": \"Borislav Valkov\",\r\n    \"ssn\": 9007102223,\r\n    \"dateOfBirth\": \"1990-07-10\",\r\n    \"grossIncome\": 3600,\r\n    \"CharitySpent\": 520\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"

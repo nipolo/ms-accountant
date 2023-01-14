@@ -9,7 +9,7 @@ namespace MS.Accountant.Api.Controllers
 {
     [Route("api/calculator")]
     [ApiController]
-    // NOTE: I'd suggest to be named TaxPayerController
+    // NOTE: Consider to be named TaxPayerController
     public class CalculatorController : ControllerBase
     {
         private readonly ITaxPayerService _taxPayerService;
@@ -23,9 +23,9 @@ namespace MS.Accountant.Api.Controllers
             _taxService = taxService;
         }
 
-        // NOTE: I'd suggest to be named tax-payer
+        // NOTE: Consider to be named tax-payer
         [HttpPost("calculate")]
-        // NOTE: I'd suggest to be named CreateTaxPayer
+        // NOTE: Consider to be named CreateTaxPayer
         public async Task<ActionResult<TaxesDto>> Calculate([FromBody] TaxPayerDto request)
         {
             var taxPayer = _taxPayerService.CreateTaxPayer(

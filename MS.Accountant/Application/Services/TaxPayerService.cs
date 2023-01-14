@@ -26,7 +26,11 @@ namespace MS.Accountant.Application.Services
             decimal charitySpent)
         {
             var taxPayer = _cacheService.GetTaxPayer(ssn);
-            if (taxPayer != null)
+            if (taxPayer != null
+                && taxPayer.FullName == fullName
+                && taxPayer.DateOfBirth == dateOfBirth
+                && taxPayer.GrossIncome == grossIncome
+                && taxPayer.CharitySpent == charitySpent)
             {
                 return taxPayer;
             }
