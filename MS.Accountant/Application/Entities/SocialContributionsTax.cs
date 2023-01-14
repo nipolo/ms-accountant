@@ -20,7 +20,10 @@ namespace MS.Accountant.Application.Entities
 
         public decimal CalculateTax(decimal amount)
         {
-            return Math.Min(amount > 1000.0m ? amount - 1000m : 0m, 2000m) * 0.15m;
+            return Math.Min(
+                    Math.Max(amount - Settings.TaxFreeMaxAmount.Value, 0m),
+                    Settings.MaxTaxableAmount.Value - Settings.TaxFreeMaxAmount.Value)
+                * (Settings.Percent / 100.0m);
         }
     }
 }

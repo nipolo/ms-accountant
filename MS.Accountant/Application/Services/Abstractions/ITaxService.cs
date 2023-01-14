@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 
 using MS.Accountant.Application.Entities;
+using MS.Accountant.Application.Entities.Abstractions;
 
 namespace MS.Accountant.Application.Services.Abstractions
 {
     public interface ITaxService
     {
-        List<TaxInstance> CalculateTaxes(decimal startingAmount);
+        (List<TaxInstance> Taxes, decimal TaxFreeCharitySpendings) CalculateTaxes(decimal startingAmount, decimal charitySpent);
 
-        int FindTaxIdByName(string taxName);
+        ITax FindTaxByName(string taxName);
     }
 }

@@ -37,9 +37,11 @@ namespace MS.Accountant.Application.Services
 
             taxPayer = new TaxPayer(fullName, ssn, dateOfBirth, grossIncome, charitySpent);
 
-            var taxes = _taxService.CalculateTaxes(taxPayer.GrossIncome - taxPayer.TaxFreeCharitySpendings);
+            var (taxes, taxFreeCharitySpendings) = _taxService.CalculateTaxes(taxPayer.GrossIncome,
+                charitySpent);
 
             taxPayer.Taxes.AddRange(taxes);
+            taxPayer.TaxFreeCharitySpendings = taxFreeCharitySpendings;
 
             _cacheService.SaveTaxPayer(taxPayer);
 

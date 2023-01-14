@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 
 using Microsoft.Extensions.Options;
@@ -13,25 +14,30 @@ namespace MS.Accountant.Application.Services
     public class TaxService : ITaxService
     {
         private readonly List<ITax> _taxes = new();
-
+        private readonly decimal _maxCharityFreePercent;
         public TaxService(IOptions<TaxesSettings> taxesSettings)
         {
             _taxes.Add(new IncomeTax(taxesSettings.Value.Taxes[nameof(IncomeTax)]));
             _taxes.Add(new SocialContributionsTax(taxesSettings.Value.Taxes[nameof(SocialContributionsTax)]));
+            _maxCharityFreePercent = taxesSettings.Value.MaxCharityFreePercent;
         }
 
-        public List<TaxInstance> CalculateTaxes(decimal startingAmount)
+        public (List<TaxInstance> Taxes, decimal TaxFreeCharitySpendings) CalculateTaxes(decimal startingAmount, decimal charitySpent)
         {
-            return _taxes.Select(x => new TaxInstance
+            var taxFreeCharitySpendings = Math.Min(charitySpent, _maxCharityFreePercent / 100.0m * startingAmount);
+
+            var taxes = _taxes.Select(x => new TaxInstance
             {
                 TaxId = x.Id,
-                TaxAmount = x.CalculateTax(startingAmount)
+                TaxAmount = x.CalculateTax(startingAmount - taxFreeCharitySpendings)
             }).ToList();
+
+            return (taxes, taxFreeCharitySpendings);
         }
 
-        public int FindTaxIdByName(string taxName)
+        public ITax FindTaxByName(string taxName)
         {
-            return _taxes.FirstOrDefault(x => x.Name == taxName).Id;
+            return _taxes.FirstOrDefault(x => x.Name == taxName);
         }
     }
 }

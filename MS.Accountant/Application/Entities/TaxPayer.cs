@@ -48,7 +48,6 @@ namespace MS.Accountant.Application.Entities
             DateOfBirth = dateOfBirth;
             GrossIncome = grossIncome;
             CharitySpent = charitySpent;
-            TaxFreeCharitySpendings = Math.Min(CharitySpent, 0.1m * GrossIncome);
             Taxes = new List<TaxInstance>();
         }
 
@@ -62,7 +61,7 @@ namespace MS.Accountant.Application.Entities
 
         public decimal CharitySpent { get; }
 
-        public decimal TaxFreeCharitySpendings { get; }
+        public decimal TaxFreeCharitySpendings { get; set; }
 
         public List<TaxInstance> Taxes { get; }
 

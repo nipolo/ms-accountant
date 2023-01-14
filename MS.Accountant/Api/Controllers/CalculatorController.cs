@@ -26,7 +26,7 @@ namespace MS.Accountant.Api.Controllers
         // NOTE: Consider to be named tax-payer
         [HttpPost("calculate")]
         // NOTE: Consider to be named CreateTaxPayer
-        public async Task<ActionResult<TaxesDto>> Calculate([FromBody] TaxPayerDto request)
+        public ActionResult<TaxesDto> Calculate([FromBody] TaxPayerDto request)
         {
             var taxPayer = _taxPayerService.CreateTaxPayer(
                 request.FullName, 
@@ -41,8 +41,8 @@ namespace MS.Accountant.Api.Controllers
                 GrossIncome = taxPayer.GrossIncome,
                 NetIncome = taxPayer.NetIncome,
                 TotalTax = taxPayer.TotalTaxes,
-                IncomeTax = taxPayer.Taxes.Single(x => x.TaxId == _taxService.FindTaxIdByName(nameof(IncomeTax))).TaxAmount,
-                SocialTax = taxPayer.Taxes.Single(x => x.TaxId == _taxService.FindTaxIdByName(nameof(SocialContributionsTax))).TaxAmount
+                IncomeTax = taxPayer.Taxes.Single(x => x.TaxId == _taxService.FindTaxByName(nameof(IncomeTax)).Id).TaxAmount,
+                SocialTax = taxPayer.Taxes.Single(x => x.TaxId == _taxService.FindTaxByName(nameof(SocialContributionsTax)).Id).TaxAmount
             };
 
             return Ok(response);
