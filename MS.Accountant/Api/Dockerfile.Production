@@ -11,10 +11,10 @@ COPY ["MS.Accountant/Application/MS.Accountant.Application.csproj", "MS.Accounta
 RUN dotnet restore "MS.Accountant/Api/MS.Accountant.Api.csproj"
 COPY . .
 WORKDIR "/src/MS.Accountant/Api"
-RUN dotnet build "MS.Accountant.Api.csproj" -c Local -o /app/build
+RUN dotnet build "MS.Accountant.Api.csproj" -c Production -o /app/build
 
 FROM build AS publish
-RUN dotnet publish "MS.Accountant.Api.csproj" -c Local -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "MS.Accountant.Api.csproj" -c Production -o /app/publish /p:UseAppHost=false
 
 FROM base AS final
 WORKDIR /app

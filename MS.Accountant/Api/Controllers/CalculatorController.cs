@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using System.Threading.Tasks;
-
-using Microsoft.AspNetCore.Http;
+﻿using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using MS.Accountant.Api.Dtos.Calculator;
 using MS.Accountant.Application.Services.Abstractions;

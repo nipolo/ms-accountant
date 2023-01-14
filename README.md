@@ -18,7 +18,7 @@ Create a Web Api application **NET6.0** that would calculate net salary given th
 
 ## Initial setup
 ### Local setup with script
-1. Run [this](Deployment/Deployment.Development.cmd) cmd file 
+1. Run [this](Deployment/Deployment.Local.cmd) cmd file 
 
 ### Local setup with Visual Studio
 1. Open **MS.Accountant.sln** with Visual Studio 2022

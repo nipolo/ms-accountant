@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Concurrent;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Concurrent;
 
 using MS.Accountant.Application.Entities;
+using MS.Accountant.Application.Services.Abstractions;
 
 namespace MS.Accountant.Application.Services
 {

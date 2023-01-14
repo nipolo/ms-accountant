@@ -1,6 +1,6 @@
 ﻿using MS.Accountant.Application.Entities;
 
-namespace MS.Accountant.Application.Services
+namespace MS.Accountant.Application.Services.Abstractions
 {
     public interface ICacheService
     {
