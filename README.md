@@ -34,7 +34,7 @@ Create a Web Api application **NET6.0** that would calculate net salary given th
 1. Press F5
 
 ## Test the project
-Import Postman collections and environments from [here](Tests\Postman)
+Import Postman collections and environments from [here](Tests/Postman)
 ### Testing locally using Postman
 1. Open Postman with the imported collections and environments
 1. Choose **MS.Accountant-Local** environment
