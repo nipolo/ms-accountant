@@ -4,11 +4,9 @@ namespace MS.Accountant.Application.Entities.Abstractions
 {
     public interface ITax
     {
-        public int Id { get; }
+        public string Name { get; init; }
 
-        public string Name { get; }
-
-        public TaxSettings Settings { get; }
+        public TaxSettings Settings { get; init; }
 
         public decimal CalculateTax(decimal amount);
     }

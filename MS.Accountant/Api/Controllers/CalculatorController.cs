@@ -4,6 +4,7 @@ using MS.Accountant.Api.Dtos.Calculator;
 using MS.Accountant.Application.Services.Abstractions;
 using System.Linq;
 using MS.Accountant.Application.Entities;
+using System.Xml.Linq;
 
 namespace MS.Accountant.Api.Controllers
 {
@@ -29,7 +30,7 @@ namespace MS.Accountant.Api.Controllers
         public ActionResult<TaxesDto> Calculate([FromBody] TaxPayerDto request)
         {
             var taxPayer = _taxPayerService.CreateTaxPayer(
-                request.FullName, 
+                request.FullName,
                 request.SSN,
                 request.DateOfBirth,
                 request.GrossIncome,
@@ -41,8 +42,8 @@ namespace MS.Accountant.Api.Controllers
                 GrossIncome = taxPayer.GrossIncome,
                 NetIncome = taxPayer.NetIncome,
                 TotalTax = taxPayer.TotalTaxes,
-                IncomeTax = taxPayer.Taxes.Single(x => x.TaxId == _taxService.FindTaxByName(nameof(IncomeTax)).Id).TaxAmount,
-                SocialTax = taxPayer.Taxes.Single(x => x.TaxId == _taxService.FindTaxByName(nameof(SocialContributionsTax)).Id).TaxAmount
+                IncomeTax = taxPayer.Taxes[nameof(IncomeTax)].TaxAmount,
+                SocialTax = taxPayer.Taxes[nameof(SocialContributionsTax)].TaxAmount
             };
 
             return Ok(response);

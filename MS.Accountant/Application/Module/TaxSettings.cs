@@ -2,10 +2,10 @@
 {
     public class TaxSettings
     {
-        public decimal? TaxFreeMaxAmount { get; set; }
+        public decimal? TaxFreeMaxAmount { get; init; }
 
-        public decimal? MaxTaxableAmount { get; set; }
+        public decimal? MaxTaxableAmount { get; init; }
 
-        public decimal Percent { get; set; }
+        public decimal Percent { get; init; }
     }
 }

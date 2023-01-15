@@ -40,7 +40,7 @@ namespace MS.Accountant.Application.Services
             var (taxes, taxFreeCharitySpendings) = _taxService.CalculateTaxes(taxPayer.GrossIncome,
                 charitySpent);
 
-            taxPayer.Taxes.AddRange(taxes);
+            taxPayer.Taxes = new(taxes);
             taxPayer.TaxFreeCharitySpendings = taxFreeCharitySpendings;
 
             _cacheService.SaveTaxPayer(taxPayer);

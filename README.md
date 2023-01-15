@@ -15,6 +15,14 @@ Create a Web Api application **NET6.0** that would calculate net salary given th
 
 **Example 4**: Bill has a salary of 3600 IDR. He has spent 520 IDR on charity causes during the year. His taxable gross income is 3600 – 360 = 3240 IDR owns income tax: 10% out of 2240 => 224. His Social contributions are 15% out of 2000 => 300. In total her tax is 524 and she gets to bring home 3076 IDR
 
+### Notes
+- All the calculated taxpayers should be kept in-memory cache for implementing response idempotency.
+- The good practices of the OOP should be used.
+- All the calculations should be covered by unit tests.
+- All the parameters of the tax paying calculations are specific to jurisdiction and are subject of change.
+- The solution should be extensible to other tax paying calculations to be implemented later on.
+- Add support for docker for Windows with Linux containers.
+- Please over-engineer it to make it as extensible and scalable as possible.
 
 ## Initial setup
 ### Local setup with script
@@ -32,5 +40,9 @@ Import Postman collections and environments from [here](Tests)
 1. Choose **MS.Accountant-Local** environment
 1. Execute *Calculator* requests
 
-## Notes
+## Run Visual Studio tests
+### Run
+1. Open **MS.Accountant.sln** with Visual Studio 2022
+1. Open **Test Explorer**
+1. Run all tests
 

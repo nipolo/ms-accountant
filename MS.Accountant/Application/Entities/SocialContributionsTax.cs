@@ -7,16 +7,9 @@ namespace MS.Accountant.Application.Entities
 {
     public class SocialContributionsTax : ITax
     {
-        public SocialContributionsTax(TaxSettings settings)
-        {
-            Settings = settings;
-        }
+        public string Name { get; init; }
 
-        public int Id => 2;
-
-        public string Name => nameof(SocialContributionsTax);
-
-        public TaxSettings Settings { get; }
+        public TaxSettings Settings { get; init; }
 
         public decimal CalculateTax(decimal amount)
         {

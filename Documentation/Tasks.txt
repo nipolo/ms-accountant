@@ -18,4 +18,4 @@
 			- Methods
 				- Calculate tax
 - Create InMemoryCacheService
-- Add tests for TaxCalculateService->CalculateTaxes
+- Add tests for TaxService->CalculateTaxes

@@ -3,6 +3,8 @@ using System.Linq;
 
 using Microsoft.Extensions.Options;
 
+using Moq;
+
 using MS.Accountant.Application.Entities;
 using MS.Accountant.Application.Module;
 using MS.Accountant.Application.Services;
@@ -19,7 +21,7 @@ namespace MS.Accountant.Application.Tests
         [OneTimeSetUp]
         public void Setup()
         {
-            var taxesSettingsOptions = Options.Create(new TaxesSettings()
+            var taxesSettingsOptions = Mock.Of<IOptionsMonitor<TaxesSettings>>(x => x.CurrentValue == new TaxesSettings()
             {
                 MaxCharityFreePercent = 10m,
                 Taxes = new Dictionary<string, TaxSettings>
@@ -43,8 +45,9 @@ namespace MS.Accountant.Application.Tests
                     }
                 }
             });
+            var taxSettingsService = new TaxSettingsService(taxesSettingsOptions);
 
-            _taxService = new TaxService(taxesSettingsOptions);
+            _taxService = new TaxService(taxSettingsService);
         }
 
         [TestCase(980, 0, 0, 0, 0)]
@@ -70,10 +73,10 @@ namespace MS.Accountant.Application.Tests
 
             Assert.That(taxes.Count, Is.EqualTo(2));
 
-            var incomeTaxAmount = taxes.Single(x => x.TaxId == 1).TaxAmount;
+            var incomeTaxAmount = taxes[nameof(IncomeTax)].TaxAmount;
             Assert.That(incomeTaxAmount, Is.EqualTo(incomeTaxExpectedAmount));
 
-            var socialContributionsTaxAmount = taxes.Single(x => x.TaxId == 2).TaxAmount;
+            var socialContributionsTaxAmount = taxes[nameof(SocialContributionsTax)].TaxAmount;
             Assert.That(socialContributionsTaxAmount, Is.EqualTo(socialContributionsTaxExpectedAmount));
         }
     }

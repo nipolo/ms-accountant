@@ -7,16 +7,9 @@ namespace MS.Accountant.Application.Entities
 {
     public class IncomeTax : ITax
     {
-        public IncomeTax(TaxSettings settings)
-        {
-            Settings = settings;
-        }
+        public string Name { get; init; }
 
-        public int Id => 1;
-
-        public string Name => nameof(IncomeTax);
-
-        public TaxSettings Settings { get; }
+        public TaxSettings Settings { get; init; }
 
         public decimal CalculateTax(decimal amount)
         {

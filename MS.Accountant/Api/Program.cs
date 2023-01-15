@@ -62,8 +62,8 @@ namespace MS.Accountant.Api
         private static IConfigurationRoot BuildConfiguration()
         {
             return new ConfigurationBuilder()
-                            .AddJsonFile("appsettings.json", optional: false)
-                            .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT")}.json", optional: false)
+                            .AddJsonFile("appsettings.json", optional: false, reloadOnChange: true)
+                            .AddJsonFile($"appsettings.{Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT")}.json", optional: false, reloadOnChange: true)
                             .AddEnvironmentVariables()
                             .Build();
         }

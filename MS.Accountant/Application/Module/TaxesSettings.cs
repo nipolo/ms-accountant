@@ -6,8 +6,8 @@ namespace MS.Accountant.Application.Module
     {
         public const string Key = nameof(TaxesSettings);
 
-        public decimal MaxCharityFreePercent { get; set; }
+        public decimal MaxCharityFreePercent { get; init; }
 
-        public Dictionary<string, TaxSettings> Taxes { get; set; }
+        public Dictionary<string, TaxSettings> Taxes { get; init; }
     }
 }

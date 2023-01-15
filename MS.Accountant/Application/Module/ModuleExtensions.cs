@@ -10,9 +10,10 @@ namespace MS.Accountant.Application.Module
     {
         public static IServiceCollection AddApplicationModule(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddSingleton<ITaxService, TaxService>();
+            services.AddScoped<ITaxService, TaxService>();
             services.AddScoped<ITaxPayerService, TaxPayerService>();
-            services.AddScoped<ICacheService, CacheService>();
+            services.AddSingleton<ICacheService, CacheService>();
+            services.AddSingleton<ITaxSettingsService, TaxSettingsService>();
 
             return services;
         }
