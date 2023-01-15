@@ -25,7 +25,8 @@ namespace MS.Accountant.Application.Entities
                 throw new InvalidArgumentDomainException(nameof(fullName), fullName);
             }
 
-            if (ssn < Math.Pow(10, (MinNumberOfSSNDigits - 1)) || ssn >= Math.Pow(10, MaxNumberOfSSNDigits + 1))
+            if (ssn < Math.Pow(10, MinNumberOfSSNDigits - 1)
+                || ssn >= Math.Pow(10, MaxNumberOfSSNDigits + 1))
             {
                 throw new InvalidArgumentDomainException(nameof(ssn), ssn);
             }

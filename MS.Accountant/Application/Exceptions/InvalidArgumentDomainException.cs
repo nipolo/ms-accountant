@@ -7,7 +7,7 @@ namespace MS.Accountant.Application.Exceptions
         public InvalidArgumentDomainException(string argumentName, object argumentValue)
             : base($"Invalid argument {argumentName}: {argumentValue}")
         {
-            
+
         }
     }
 }

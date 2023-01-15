@@ -13,7 +13,7 @@ namespace MS.Accountant.Application.Entities
 
         public decimal CalculateTax(decimal amount)
         {
-            return Math.Max(amount - Settings.TaxFreeMaxAmount.Value, 0m) 
+            return Math.Max(amount - Settings.TaxFreeMaxAmount.Value, 0m)
                 * (Settings.Percent / 100.0m);
         }
     }

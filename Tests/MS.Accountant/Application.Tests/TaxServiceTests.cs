@@ -1,5 +1,4 @@
 using System.Collections.Generic;
-using System.Linq;
 
 using Microsoft.Extensions.Options;
 
@@ -57,7 +56,7 @@ namespace MS.Accountant.Application.Tests
         [TestCase(1020, 80, 80, 0, 0)]
         [TestCase(1100, 50, 50, 5, 7.5)]
         public void GrossAmount_Calculate_TaxesCalculated(
-            decimal grossAmount, 
+            decimal grossAmount,
             decimal charitySpent,
             decimal taxFreeCharitySpendingsExpected,
             decimal incomeTaxExpectedAmount,

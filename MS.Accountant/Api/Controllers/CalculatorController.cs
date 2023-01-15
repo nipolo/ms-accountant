@@ -1,10 +1,8 @@
-﻿using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+
 using MS.Accountant.Api.Dtos.Calculator;
-using MS.Accountant.Application.Services.Abstractions;
-using System.Linq;
 using MS.Accountant.Application.Entities;
-using System.Xml.Linq;
+using MS.Accountant.Application.Services.Abstractions;
 
 namespace MS.Accountant.Api.Controllers
 {

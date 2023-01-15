@@ -31,7 +31,7 @@ namespace MS.Accountant.Application.Services
             {
                 TaxName = x.Name,
                 TaxAmount = x.CalculateTax(startingAmount - taxFreeCharitySpendings)
-            }).ToDictionary(x=> x.TaxName, x => x);
+            }).ToDictionary(x => x.TaxName, x => x);
 
             return (taxes, taxFreeCharitySpendings);
         }
