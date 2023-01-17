@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 
-using MS.Accountant.Application.Entities;
+using MS.Accountant.Domain.Entities;
 
 namespace MS.Accountant.Application.Services.Abstractions
 {

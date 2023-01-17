@@ -1,4 +1,4 @@
-﻿namespace MS.Accountant.Application.Entities.Abstractions
+﻿namespace MS.Accountant.Domain.Entities.Abstractions
 {
     public interface IEntity
     {

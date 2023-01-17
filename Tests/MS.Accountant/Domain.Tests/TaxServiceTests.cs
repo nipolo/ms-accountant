@@ -4,14 +4,14 @@ using Microsoft.Extensions.Options;
 
 using Moq;
 
-using MS.Accountant.Application.Entities;
-using MS.Accountant.Application.Module;
-using MS.Accountant.Application.Services;
-using MS.Accountant.Application.Services.Abstractions;
+using MS.Accountant.Domain.Entities;
+using MS.Accountant.Domain.Module;
+using MS.Accountant.Domain.Services;
+using MS.Accountant.Domain.Services.Abstractions;
 
 using NUnit.Framework;
 
-namespace MS.Accountant.Application.Tests
+namespace MS.Accountant.Domain.Tests
 {
     public class Tests
     {

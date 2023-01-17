@@ -2,11 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 
-using MS.Accountant.Application.Entities;
-using MS.Accountant.Application.Entities.Abstractions;
-using MS.Accountant.Application.Services.Abstractions;
+using MS.Accountant.Domain.Entities;
+using MS.Accountant.Domain.Entities.Abstractions;
+using MS.Accountant.Domain.Services.Abstractions;
 
-namespace MS.Accountant.Application.Services
+namespace MS.Accountant.Domain.Services
 {
     public class TaxService : ITaxService
     {

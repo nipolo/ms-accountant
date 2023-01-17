@@ -3,8 +3,9 @@
 using Microsoft.AspNetCore.Mvc;
 
 using MS.Accountant.Api.Dtos.Calculator;
-using MS.Accountant.Application.Entities;
 using MS.Accountant.Application.Services.Abstractions;
+using MS.Accountant.Domain.Entities;
+using MS.Accountant.Domain.Services.Abstractions;
 
 namespace MS.Accountant.Api.Controllers
 {

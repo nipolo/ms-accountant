@@ -1,19 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text.RegularExpressions;
+using MS.Accountant.Domain.Entities.Abstractions;
 
-using MS.Accountant.Application.Entities.Abstractions;
-using MS.Accountant.Application.Exceptions;
-
-namespace MS.Accountant.Application.Entities
+namespace MS.Accountant.Domain.Entities
 {
     public class TaxPayer : IEntity
     {
-        public const int MinNumberOfSSNDigits = 5;
-        public const int MaxNumberOfSSNDigits = 10;
-        public static readonly Regex FullNameRegEx = new(@"^[a-zA-Z]+\s[a-zA-Z]+$");
-
         public TaxPayer(
             string fullName,
             long ssn,

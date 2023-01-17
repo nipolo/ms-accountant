@@ -1,8 +1,8 @@
 ﻿using System.Threading;
 using System.Threading.Tasks;
 
-using MS.Accountant.Application.Entities;
-using MS.Accountant.Application.Entities.Abstractions;
+using MS.Accountant.Domain.Entities.Abstractions;
+using MS.Accountant.Application.Models;
 
 namespace MS.Accountant.Application.Services.Abstractions
 {

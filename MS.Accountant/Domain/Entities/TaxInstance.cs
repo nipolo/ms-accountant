@@ -1,4 +1,4 @@
-﻿namespace MS.Accountant.Application.Entities
+﻿namespace MS.Accountant.Domain.Entities
 {
     public class TaxInstance
     {

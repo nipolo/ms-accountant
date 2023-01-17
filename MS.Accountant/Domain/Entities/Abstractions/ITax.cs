@@ -1,6 +1,6 @@
-﻿using MS.Accountant.Application.Module;
+﻿using MS.Accountant.Domain.Module;
 
-namespace MS.Accountant.Application.Entities.Abstractions
+namespace MS.Accountant.Domain.Entities.Abstractions
 {
     public interface ITax
     {

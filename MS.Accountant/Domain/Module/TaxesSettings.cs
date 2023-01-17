@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace MS.Accountant.Application.Module
+namespace MS.Accountant.Domain.Module
 {
     public class TaxesSettings
     {

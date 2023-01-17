@@ -11,6 +11,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MS.Accountant.Api.Dtos.Calculator;
 using MS.Accountant.Api.Exceptions;
 using MS.Accountant.Application.Module;
+using MS.Accountant.Domain.Module;
 
 namespace MS.Accountant.Api
 {

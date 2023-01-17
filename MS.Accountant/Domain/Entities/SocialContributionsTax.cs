@@ -1,9 +1,9 @@
 ﻿using System;
 
-using MS.Accountant.Application.Entities.Abstractions;
-using MS.Accountant.Application.Module;
+using MS.Accountant.Domain.Entities.Abstractions;
+using MS.Accountant.Domain.Module;
 
-namespace MS.Accountant.Application.Entities
+namespace MS.Accountant.Domain.Entities
 {
     public class SocialContributionsTax : ITax
     {

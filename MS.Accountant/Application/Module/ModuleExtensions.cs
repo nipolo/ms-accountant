@@ -1,9 +1,10 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-using MS.Accountant.Application.Entities;
 using MS.Accountant.Application.Services;
 using MS.Accountant.Application.Services.Abstractions;
+using MS.Accountant.Domain.Entities;
+using MS.Accountant.Domain.Module;
 
 namespace MS.Accountant.Application.Module
 {
@@ -11,10 +12,10 @@ namespace MS.Accountant.Application.Module
     {
         public static IServiceCollection AddApplicationModule(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddScoped<ITaxService, TaxService>();
+            services.AddDomainModule(configuration);
+
             services.AddScoped<ITaxPayerService, TaxPayerService>();
             services.AddSingleton<ICacheService<TaxPayer>, CacheService<TaxPayer>>();
-            services.AddSingleton<ITaxSettingsService, TaxSettingsService>();
 
             return services;
         }

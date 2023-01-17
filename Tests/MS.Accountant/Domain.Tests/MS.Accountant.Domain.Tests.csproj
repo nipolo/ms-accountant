@@ -18,7 +18,7 @@
     </ItemGroup>
 
     <ItemGroup>
-        <ProjectReference Include="..\..\..\MS.Accountant\Application\MS.Accountant.Application.csproj" />
+      <ProjectReference Include="..\..\..\MS.Accountant\Domain\MS.Accountant.Domain.csproj" />
     </ItemGroup>
 
 </Project>

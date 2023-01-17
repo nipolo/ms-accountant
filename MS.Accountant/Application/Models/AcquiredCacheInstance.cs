@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Threading;
 
-namespace MS.Accountant.Application.Entities
+namespace MS.Accountant.Application.Models
 {
     public class AcquiredCacheInstance<T> : IDisposable
     {

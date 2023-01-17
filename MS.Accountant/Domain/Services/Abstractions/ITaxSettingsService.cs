@@ -1,6 +1,6 @@
-﻿using MS.Accountant.Application.Module;
+﻿using MS.Accountant.Domain.Module;
 
-namespace MS.Accountant.Application.Services.Abstractions
+namespace MS.Accountant.Domain.Services.Abstractions
 {
     public interface ITaxSettingsService
     {

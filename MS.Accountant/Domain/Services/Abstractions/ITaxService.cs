@@ -1,8 +1,8 @@
 ﻿using System.Collections.Generic;
 
-using MS.Accountant.Application.Entities;
+using MS.Accountant.Domain.Entities;
 
-namespace MS.Accountant.Application.Services.Abstractions
+namespace MS.Accountant.Domain.Services.Abstractions
 {
     public interface ITaxService
     {

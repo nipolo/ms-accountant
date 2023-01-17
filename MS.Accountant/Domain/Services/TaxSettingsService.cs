@@ -1,9 +1,9 @@
 ﻿using Microsoft.Extensions.Options;
 
-using MS.Accountant.Application.Module;
-using MS.Accountant.Application.Services.Abstractions;
+using MS.Accountant.Domain.Module;
+using MS.Accountant.Domain.Services.Abstractions;
 
-namespace MS.Accountant.Application.Services
+namespace MS.Accountant.Domain.Services
 {
     // TODO: Implement tax settings to load from the DB
     public class TaxSettingsService : ITaxSettingsService

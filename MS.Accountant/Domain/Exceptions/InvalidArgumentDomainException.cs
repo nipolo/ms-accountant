@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace MS.Accountant.Application.Exceptions
+namespace MS.Accountant.Domain.Exceptions
 {
     public class InvalidArgumentDomainException : Exception
     {
