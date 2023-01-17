@@ -8,6 +8,7 @@ FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
 WORKDIR /src
 COPY ["MS.Accountant/Api/MS.Accountant.Api.csproj", "MS.Accountant/Api/"]
 COPY ["MS.Accountant/Application/MS.Accountant.Application.csproj", "MS.Accountant/Application/"]
+COPY ["MS.Accountant/Domain/MS.Accountant.Domain.csproj", "MS.Accountant/Domain/"]
 RUN dotnet restore "MS.Accountant/Api/MS.Accountant.Api.csproj"
 COPY . .
 WORKDIR "/src/MS.Accountant/Api"
