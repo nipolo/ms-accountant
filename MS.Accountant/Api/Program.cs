@@ -1,10 +1,14 @@
 using System;
 using System.Text.Json.Serialization;
 
+using FluentValidation;
+using FluentValidation.AspNetCore;
+
 using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using MS.Accountant.Api.Dtos.Calculator;
 using MS.Accountant.Api.Exceptions;
 using MS.Accountant.Application.Module;
 
@@ -38,6 +42,9 @@ namespace MS.Accountant.Api
                     options.Filters.Add(typeof(HttpResponseExceptionFilter)))
                 .AddJsonOptions(options =>
                     options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
+            builder.Services.AddFluentValidationAutoValidation();
+            builder.Services.AddFluentValidationClientsideAdapters();
+            builder.Services.AddValidatorsFromAssemblyContaining<TaxPayerDtoValidator>();
 
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
             builder.Services.AddEndpointsApiExplorer();

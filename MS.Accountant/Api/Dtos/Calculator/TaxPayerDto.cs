@@ -13,6 +13,6 @@ namespace MS.Accountant.Api.Dtos.Calculator
 
         public decimal GrossIncome { get; set; }
 
-        public decimal CharitySpent { get; set; }
+        public decimal? CharitySpent { get; set; }
     }
 }

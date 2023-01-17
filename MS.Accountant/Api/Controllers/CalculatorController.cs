@@ -34,7 +34,7 @@ namespace MS.Accountant.Api.Controllers
                 request.SSN,
                 request.DateOfBirth,
                 request.GrossIncome,
-                request.CharitySpent);
+                request.CharitySpent ?? 0);
 
             var response = new TaxesDto
             {

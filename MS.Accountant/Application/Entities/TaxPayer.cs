@@ -10,9 +10,9 @@ namespace MS.Accountant.Application.Entities
 {
     public class TaxPayer : IEntity
     {
-        private const int MinNumberOfSSNDigits = 5;
-        private const int MaxNumberOfSSNDigits = 10;
-        private readonly Regex _fullNameRegEx = new(@"^[a-zA-Z]+\s[a-zA-Z]+$");
+        public const int MinNumberOfSSNDigits = 5;
+        public const int MaxNumberOfSSNDigits = 10;
+        public static readonly Regex FullNameRegEx = new(@"^[a-zA-Z]+\s[a-zA-Z]+$");
 
         public TaxPayer(
             string fullName,
@@ -23,7 +23,7 @@ namespace MS.Accountant.Application.Entities
             Dictionary<string, TaxInstance> taxes,
             decimal taxFreeCharitySpendings)
         {
-            if (!_fullNameRegEx.IsMatch(fullName))
+            if (!FullNameRegEx.IsMatch(fullName))
             {
                 throw new InvalidArgumentDomainException(nameof(fullName), fullName);
             }
