@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Threading.Tasks;
 
 using MS.Accountant.Application.Entities;
 using MS.Accountant.Application.Services.Abstractions;
@@ -8,42 +9,37 @@ namespace MS.Accountant.Application.Services
     public class TaxPayerService : ITaxPayerService
     {
         private readonly ITaxService _taxService;
-        private readonly ICacheService _cacheService;
+        private readonly ICacheService<TaxPayer> _taxPlayerCacheService;
 
         public TaxPayerService(
             ITaxService taxService,
-            ICacheService cacheService)
+            ICacheService<TaxPayer> taxPlayerCacheService)
         {
             _taxService = taxService;
-            _cacheService = cacheService;
+            _taxPlayerCacheService = taxPlayerCacheService;
         }
 
-        public TaxPayer CreateTaxPayer(
+        public async Task<TaxPayer> CreateTaxPayerAsync(
             string fullName,
             long ssn,
             DateTime? dateOfBirth,
             decimal grossIncome,
             decimal charitySpent)
         {
-            var taxPayer = _cacheService.GetTaxPayer(ssn);
+            using var acquiredCacheInstance = await _taxPlayerCacheService.AcquireCacheInstanceAsync(ssn);
+
+            var taxPayer = acquiredCacheInstance.Instance;
             if (taxPayer != null
-                && taxPayer.FullName == fullName
-                && taxPayer.DateOfBirth == dateOfBirth
-                && taxPayer.GrossIncome == grossIncome
-                && taxPayer.CharitySpent == charitySpent)
+                && taxPayer.Equals(fullName, dateOfBirth, grossIncome, charitySpent))
             {
                 return taxPayer;
             }
 
-            taxPayer = new TaxPayer(fullName, ssn, dateOfBirth, grossIncome, charitySpent);
+            var (taxes, taxFreeCharitySpendings) = _taxService.CalculateTaxes(grossIncome, charitySpent);
 
-            var (taxes, taxFreeCharitySpendings) = _taxService.CalculateTaxes(taxPayer.GrossIncome,
-                charitySpent);
+            taxPayer = new TaxPayer(fullName, ssn, dateOfBirth, grossIncome, charitySpent, taxes, taxFreeCharitySpendings);
 
-            taxPayer.Taxes = new(taxes);
-            taxPayer.TaxFreeCharitySpendings = taxFreeCharitySpendings;
-
-            _cacheService.SaveTaxPayer(taxPayer);
+            _taxPlayerCacheService.AddOrUpdate(taxPayer, acquiredCacheInstance.Mutex);
 
             return taxPayer;
         }

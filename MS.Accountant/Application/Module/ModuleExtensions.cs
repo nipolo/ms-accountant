@@ -1,6 +1,7 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+using MS.Accountant.Application.Entities;
 using MS.Accountant.Application.Services;
 using MS.Accountant.Application.Services.Abstractions;
 
@@ -12,7 +13,7 @@ namespace MS.Accountant.Application.Module
         {
             services.AddScoped<ITaxService, TaxService>();
             services.AddScoped<ITaxPayerService, TaxPayerService>();
-            services.AddSingleton<ICacheService, CacheService>();
+            services.AddSingleton<ICacheService<TaxPayer>, CacheService<TaxPayer>>();
             services.AddSingleton<ITaxSettingsService, TaxSettingsService>();
 
             return services;

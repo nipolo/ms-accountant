@@ -3,11 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
+using MS.Accountant.Application.Entities.Abstractions;
 using MS.Accountant.Application.Exceptions;
 
 namespace MS.Accountant.Application.Entities
 {
-    public class TaxPayer
+    public class TaxPayer : IEntity
     {
         private const int MinNumberOfSSNDigits = 5;
         private const int MaxNumberOfSSNDigits = 10;
@@ -18,7 +19,9 @@ namespace MS.Accountant.Application.Entities
             long ssn,
             DateTime? dateOfBirth,
             decimal grossIncome,
-            decimal charitySpent)
+            decimal charitySpent,
+            Dictionary<string, TaxInstance> taxes,
+            decimal taxFreeCharitySpendings)
         {
             if (!_fullNameRegEx.IsMatch(fullName))
             {
@@ -51,25 +54,39 @@ namespace MS.Accountant.Application.Entities
             DateOfBirth = dateOfBirth;
             GrossIncome = grossIncome;
             CharitySpent = charitySpent;
-            Taxes = new Dictionary<string, TaxInstance>();
+            Taxes = taxes;
+            TaxFreeCharitySpendings = taxFreeCharitySpendings;
         }
+        public long Id => SSN;
 
-        public string FullName { get; }
+        public string FullName { get; private set; }
 
         public long SSN { get; }
 
-        public DateTime? DateOfBirth { get; }
+        public DateTime? DateOfBirth { get; private set; }
 
-        public decimal GrossIncome { get; }
+        public decimal GrossIncome { get; private set; }
 
-        public decimal CharitySpent { get; }
+        public decimal CharitySpent { get; private set; }
 
-        public decimal TaxFreeCharitySpendings { get; set; }
+        public decimal TaxFreeCharitySpendings { get; private set; }
 
-        public Dictionary<string, TaxInstance> Taxes { get; set; }
+        public Dictionary<string, TaxInstance> Taxes { get; private set; }
 
         public decimal TotalTaxes => Taxes.Sum(x => x.Value.TaxAmount);
 
         public decimal NetIncome => GrossIncome - Taxes.Sum(x => x.Value.TaxAmount);
+
+        public bool Equals(
+            string fullName,
+            DateTime? dateOfBirth,
+            decimal grossIncome,
+            decimal charitySpent)
+        {
+            return FullName == fullName
+                && DateOfBirth == dateOfBirth
+                && GrossIncome == grossIncome
+                && CharitySpent == charitySpent;
+        }
     }
 }

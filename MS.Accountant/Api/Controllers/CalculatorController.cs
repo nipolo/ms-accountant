@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using System.Threading.Tasks;
+
+using Microsoft.AspNetCore.Mvc;
 
 using MS.Accountant.Api.Dtos.Calculator;
 using MS.Accountant.Application.Entities;
@@ -25,9 +27,9 @@ namespace MS.Accountant.Api.Controllers
         // NOTE: Consider to be named tax-payer
         [HttpPost("calculate")]
         // NOTE: Consider to be named CreateTaxPayer
-        public ActionResult<TaxesDto> Calculate([FromBody] TaxPayerDto request)
+        public async Task<ActionResult<TaxesDto>> Calculate([FromBody] TaxPayerDto request)
         {
-            var taxPayer = _taxPayerService.CreateTaxPayer(
+            var taxPayer = await _taxPayerService.CreateTaxPayerAsync(
                 request.FullName,
                 request.SSN,
                 request.DateOfBirth,
