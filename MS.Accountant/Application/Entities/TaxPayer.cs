@@ -23,32 +23,6 @@ namespace MS.Accountant.Application.Entities
             Dictionary<string, TaxInstance> taxes,
             decimal taxFreeCharitySpendings)
         {
-            if (!FullNameRegEx.IsMatch(fullName))
-            {
-                throw new InvalidArgumentDomainException(nameof(fullName), fullName);
-            }
-
-            if (ssn < Math.Pow(10, MinNumberOfSSNDigits - 1)
-                || ssn >= Math.Pow(10, MaxNumberOfSSNDigits + 1))
-            {
-                throw new InvalidArgumentDomainException(nameof(ssn), ssn);
-            }
-
-            if (grossIncome < 0)
-            {
-                throw new InvalidArgumentDomainException(nameof(grossIncome), grossIncome);
-            }
-
-            if (charitySpent < 0)
-            {
-                throw new InvalidArgumentDomainException(nameof(charitySpent), charitySpent);
-            }
-
-            if (dateOfBirth.HasValue && dateOfBirth.Value > DateTime.Now)
-            {
-                throw new InvalidArgumentDomainException(nameof(dateOfBirth), dateOfBirth);
-            }
-
             FullName = fullName;
             SSN = ssn;
             DateOfBirth = dateOfBirth;
